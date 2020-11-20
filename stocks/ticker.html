@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Ticker</title>
-    <meta charset="utf-8">
-</head>
-<body>
-  <h1>{{ ticker }}</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}{{ ticker }}{% endblock %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+<div class="container text-center">
+    <h1>{{ meta.name }} ({{ ticker }})</h1>
+    <p>Description: {{ meta.description }}</p>
+    <table class="table text-center">
+      <tr><td>Open:</td><td>${{ price.open }}</td></tr>
+      <tr><td>High:</td><td>${{ price.high }}</td></tr>
+      <tr><td>Low:</td><td>${{ price.low }}</td></tr>
+      <tr><td>Close:</td><td>${{ price.close }}</td></tr>
+  </div>
+  </div>
+{% endblock%}

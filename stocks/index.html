@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Home</title>
-    <meta charset="utf-8">
-</head>
-<body>
-    <form actions="/stocks/" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    
+    <div class="jumbotron jumbtron-fluid">
+        <div class="container text-center">
+            <h1>Enter a Stock Ticker</h1>
+                <form actions="/stocks/" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" value="Submit">
+                </form>
+        </div>
+    </div>    
+{% endblock %}
