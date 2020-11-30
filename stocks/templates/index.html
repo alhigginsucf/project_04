@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    
+    <div class="jumbotron jumbtron-fluid">
+        <div class="container text-center">
+            <h1>Enter a Ticker for Information</h1>
+                <form actions="/stocks/" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" value="Submit">
+                </form>
+        </div>
+    </div>    
+{% endblock %}
