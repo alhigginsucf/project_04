@@ -1,8 +1,30 @@
 {% extends "base.html" %}
+{% block title %}Profile{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <h1>{{ user.username }}</h1>
-    <div class='container'>
-        You have $0 funds available
+<div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Manage Account</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+        <h5>Account Balance</h5>
+        </div>
+        <p>Your account balance is currently $0</p>
+        <div>
+        <div class="form-group">
+            <button class"btn btn-outline-info" type="submit">Add Cash</button>
+        </div>
+    </form>
     </div>
+    </div>
+  </div>
+ 
 {% endblock content %}

@@ -3,20 +3,19 @@
 {% block content %}
 <div class="jumbotron jumbotron-fluid">
 <div class="container text-center">
-
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-    <h1>{{ meta.name }} ({{ ticker }})</h1>
-    <p>Description: {{ meta.description }}</p>
-    <h3>Historical Data with Daily Highs and Lows</h3>
-    <table class="table text-center">
-      <tr><td>Open:</td><td>${{ price.open }}</td></tr>
-      <tr><td>High:</td><td>${{ price.high }}</td></tr>
-      <tr><td>Low:</td><td>${{ price.low }}</td></tr>
-      <tr><td>Close:</td><td>${{ price.close }}</td></tr>
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <h1>{{ meta.name }} ({{ ticker }})</h1>
+      <p>Description: {{ meta.description }}</p>
+      <h3>Historical Data with Daily Highs and Lows</h3>
+      <table class="table text-center">
+        <tr><td>Open:</td><td>${{ price.open }}</td></tr>
+        <tr><td>High:</td><td>${{ price.high }}</td></tr>
+        <tr><td>Low:</td><td>${{ price.low }}</td></tr>
+        <tr><td>Close:</td><td>${{ price.close }}</td></tr>
       </div>
       </div>
-  </div>
+    </div>
   </div>
  {% load static %}
 <img src="{% static "img/my_plot.png" %}" />

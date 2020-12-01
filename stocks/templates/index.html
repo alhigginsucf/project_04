@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
+{% load crispy_forms_tags %}
 {% block content %}
     
-    <div class="jumbotron jumbtron-fluid">
-        <div class="container text-center">
-            <h1>Enter a Ticker for Information</h1>
+    
+        <div class="content-section">
+            <fieldset class="form-group">
+            <legend>Enter a Ticker for Information</legend>
+            </fieldset>
                 <form actions="/stocks/" method="post">
                     {% csrf_token %}
-                    {{ form }}
-                    <input type="submit" value="Submit">
+                    {{ form|crispy }}
+                    <button type="submit" value="Submit">Submit</button>
                 </form>
         </div>
     </div>    
