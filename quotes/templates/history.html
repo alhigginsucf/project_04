@@ -4,9 +4,13 @@
 {% load humanize %}
 <div class="content-section">
 <h1>Transactions</h1>
+<h3>Account: {{ user.username }}</h3>
+<br/>
+<h4>Transaction History</h4>
+<br/>
 <table class="table table-bordered table-hover">
     
-    <thead class="thead-light">
+    <thead class="thead-dark">
       <tr>
         <th scope="col">Company Name</th>
         <th scope="col">Quantity Bought/Sold</th>

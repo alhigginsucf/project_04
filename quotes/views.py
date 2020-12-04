@@ -9,6 +9,9 @@ import json
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .tiingo import get_meta_data, get_price_data
+from datetime import datetime
+from django.conf import settings
+import os
 
 def home(request):
     
@@ -34,7 +37,7 @@ def trade(request):
 
     user, created = User.objects.get_or_create(
         id = 1,
-        defaults={'balance': 900000000.00},
+        defaults={'balance': 1000000000.00},
     )
 
     # data, labels = getChart("aapl")
@@ -44,7 +47,7 @@ def trade(request):
     ticker = request.GET.get('ticker', '')
     if ticker == '':
         data, labels = getCharts(positions)
-        title = 'Your Account Value'
+        title = 'Account Trends'
     else:
         title = 'Ticker: ' + ticker
         data, labels = getChart(ticker)
@@ -56,21 +59,19 @@ def trade(request):
     return render(request, 'trade.html', {'balance': user.balance, 'value': account_value, 'positions': positions, 'data': data, 'labels': labels, 'title': title})
 
 def add_stock(request):
-    import requests   
-    import json
 
     if request.method == 'POST':
         form = StockForm(request.POST or None)
 
         if form.is_valid():
             form.save()
-            messages.success(request, ("Stock Has Been Added Successfully!"))
+            messages.success(request, ("Success!"))
             return redirect ('add_stock')
     else:
         ticker = Stock.objects.all()
         output =[]
         for ticker_item in ticker:
-            api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ str(ticker_item) +"/quote?token=pk_378fb4b735894bae8434380e31b2f915")
+            api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ str(ticker_item) +"/quote?token=pk_c86375d44cc04fa2a1e34832bf928f92")
 
             try:
                 api = json.loads(api_request.content)
@@ -81,10 +82,12 @@ def add_stock(request):
 
         return render(request, 'add_stock.html', {'ticker': ticker, 'output': output})
 
+
+
 def delete(request, stock_id):
     item = Stock.objects.get(pk=stock_id)
     item.delete()
-    messages.success(request, ("Stock Has Been Deleted!"))
+    messages.success(request, ("Stock Has Been Removed!"))
     return redirect ('add_stock')
 
 def history(request):
@@ -107,7 +110,7 @@ def add_trade (request):
             new_trade = form.save(commit=False)
 
             if not validateTrade(new_trade):
-                messages.error(request, ("Your trade was invalid!"))
+                messages.error(request, ("Could Not Validate Trade!"))
                 return redirect('trade')
 
             
@@ -115,7 +118,7 @@ def add_trade (request):
 
             updatePositions(trade)
 
-            messages.success(request, ("Trade was made successfully!"))
+            messages.success(request, ("Success!"))
             return redirect ('trade')
         else: 
             messages.error(request, ("There was an issue with your entry, please try again.", form.errors))
@@ -126,7 +129,7 @@ def reset (request):
     Position.objects.all().delete()
     
     user = getUser()
-    user.balance = 900000000.00
+    user.balance = 1000000000.00
     user.save()
 
     return redirect ('trade')

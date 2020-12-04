@@ -2,6 +2,7 @@
 {% block title %}Profile{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <div class="content-section">
   <div class="media">
     <form method="POST">
@@ -20,12 +21,6 @@
         <div class="form-group">
             <input type="text" name="amount" placeholder="Enter Amount">
             <button class"btn btn-outline-info" type="submit">Add Cash</button>
-        </div>
-        <h5>Trade Stock</h5>
-        <div>
-            <input type="text" name="ticker" placeholder="Enter Ticker">
-            <input type="text" name="amount" placeholder="Enter Amount">
-            <button type="submit" value="Submit">Submit</button>
         </div>
     </form>
      {% load humanize %}

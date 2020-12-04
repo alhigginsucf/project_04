@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '392q6b^6owq_)rhsh8mw_%z9@$f9rlz%+fm*f_*p)m!ko1zn)5'
+SECRET_KEY = 'tdq9e1rv-0pkkz!u6b8$&!uj@=5-u4aj@7+7%&s8q=bat0gx+m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -143,7 +143,7 @@ STATICFILES_FINDERS = (
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # login redirect
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'trade'
 LOGIN_URL = 'login'
 
 

@@ -13,8 +13,8 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">StocKTracker</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand" href="{% url 'login' %}">StocKTracker</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,9 +36,9 @@
           </ul>
           <form action = "{% url 'home' %}" class="form-inline my-2 my-lg-0" method="POST">
               {% csrf_token %}
-            <input class="form-control mr-sm-2" type="search" placeholder="Get Stock Quote" aria-label="Search" name="ticker">
+            <input class="form-control mr-sm-2" type="search" placeholder="Get Stock Info!..." aria-label="Search" name="ticker">
             
-            <button class="btn btn-dark my-2 my-sm-0" type="submit"></button>
+            <button class="btn btn-dark my-2 my-sm-0" type="submit">Submit</button>
           </form>
           	<ul class="nav navbar-nav justify-content-end">
 						{% if user.is_authenticated %}
@@ -61,7 +61,7 @@
 
         </div>
       </nav>
-    <div class="container" style= "background-image: url({% static 'img/stock-chart.jpg'%})">
+    <div class="content-section" style= "background-image: url({% static 'img/stock-chart.jpg'%})">
         <br/>
         {% if messages %}
             {% for message in messages %}

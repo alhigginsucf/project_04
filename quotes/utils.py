@@ -72,11 +72,11 @@ def validateTrade(trade):
         current = getPosition(trade.stock_name)
 
         if current:
-            # if position exists
+            
             return current.quantity >= trade.quantity
 
         else:
-            # if position does not exist
+            
             return False
             
 
@@ -84,7 +84,7 @@ def updatePositions(trade):
     current = getPosition(trade.stock_name)
 
     if current:
-        # if position exists
+        
 
         if trade.trade_type == 0:
             current.average = (current.average*current.quantity + trade.price*trade.quantity) / (current.quantity + trade.quantity)
@@ -96,7 +96,7 @@ def updatePositions(trade):
             current.delete() if (current.quantity <= 0) else current.save()
 
     else:
-        # if position does not exist
+        
         if trade.trade_type == 0:
             position = Position(stock_name=trade.stock_name,quantity=trade.quantity,average=trade.price)
             position.save()

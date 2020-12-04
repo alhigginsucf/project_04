@@ -17,6 +17,7 @@ class PositionForm(forms.ModelForm):
     class Meta:
         model = Position
         fields = ["stock_name", "quantity", "average"]
+
 class UserRegisterForm(UserCreationForm):
     email= forms.EmailField()
 

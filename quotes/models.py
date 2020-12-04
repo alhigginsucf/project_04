@@ -17,8 +17,6 @@ class Trade (models.Model):
         quantity = models.IntegerField()
         price = models.FloatField()
 
-        # 0: Buy
-        # 1: Sell
         trade_type = models.IntegerField()
 
         @property
